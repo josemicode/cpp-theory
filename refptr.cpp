@@ -24,7 +24,10 @@ int main(){
 	
 	cout << "\nNow, we have initialised a special kind of variable which points at the array's first element: " << arrayPtr << endl;
 	cout << "This is a Hexadecimal code that represents the elements's positon in the stack and, as references, needs to be initialised as the same type as the original variable" << endl;
-	cout << "We can use it to access its value: " << *arrayPtr;
+	cout << "We can use it to access its value: " << *arrayPtr << endl;
+	
+	cout << "\nOne of its uses is going over array elements, as they are consecutive. The two elements that follow the first are: " << *(arrayPtr + 1) << " and " << *(arrayPtr + 2) << endl;
+	cout << "This is done by adding to the pointer's index; we can also get to the last element by using 'sizeof' (or knowing its size beforehand): " << *(arrayPtr + (sizeof(months)/sizeof(*arrayPtr)) - 1) << endl;
 }
 
 int egFunc(){
