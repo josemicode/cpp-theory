@@ -34,15 +34,15 @@ public:
 // Observer class
 class Observer {
 public:
-    virtual void update(const std::string& news) = 0;
+    virtual void update(const string& news) = 0;
 };
 
 // Concrete Subject class
 class NewsAgency : public Subject {
 private:
-    std::vector
+    vector
     <Observer*> observers;
-    std::string latestNews;
+    string latestNews;
 
 public:
     void addObserver(Observer* observer) override {
@@ -74,14 +74,14 @@ public:
 class EmailSubscriber : public Observer {
 public:
     void update(const std::string& news) override {
-        std::cout << "Email: Received latest news - " << news << std::endl;
+        std::cout << "Email: Received latest news - " << news << endl;
     }
 };
 
 class SMSSubscriber : public Observer {
 public:
     void update(const std::string& news) override {
-        std::cout << "SMS: Received latest news - " << news << std::endl;
+        std::cout << "SMS: Received latest news - " << news << endl;
     }
 };
 
@@ -98,13 +98,13 @@ int main() {
     agency.addObserver(&smsSubscriber);
 
     // Publishing news
-    agency.publishNews("Breaking: New discovery in space!");
+    agency.publishNews("Breaking: New discovery in an underground lab!");
 
     // Removing an observer
     agency.removeObserver(&emailSubscriber);
 
     // Publishing more news
-    agency.publishNews("Update: Weather forecast for the weekend.");
+    agency.publishNews("Update: the virus has mutated...");
 
     return 0;
 }
