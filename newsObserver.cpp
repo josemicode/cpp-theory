@@ -3,17 +3,15 @@
 using namespace std;
 /*
 4. Patrón Observador
+TODO:
 a) Considera la implementación de un sistema de notificación para una agencia de noticias. En
 este ejercicio, se le pide que implemente el patrón de diseño Observador para notificar a los
 suscriptores sobre las últimas noticias.
-• Define una clase Agencia con métodos para agregar, eliminar y notificar a los observadores.
-• Crea una clase concreta AgenciaNoticias que extienda la clase Agencia y tenga un método
-para publicar noticias.
-• Define la clase abstracta Observador con un método update().
-• Crea clases concretas de observadores para diferentes tipos de suscriptores (por ejemplo,
-suscriptor de correo electrónico, suscriptor de SMS).
-• Escribe un código de prueba que muestre cómo los observadores reciben notificaciones cuando
-se publican noticias.
+* Define una clase Agencia con métodos para agregar, eliminar y notificar a los observadores.
+* Crea una clase concreta AgenciaNoticias que extienda la clase Agencia y tenga un método para publicar noticias.
+* Define la clase abstracta Observador con un método update().
+* Crea clases concretas de observadores para diferentes tipos de suscriptores (por ejemplo, suscriptor de correo electrónico, suscriptor de SMS).
+* Escribe un código de prueba que muestre cómo los observadores reciben notificaciones cuando se publican noticias.
 */
 
 #include <iostream>
