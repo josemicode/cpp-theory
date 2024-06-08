@@ -22,69 +22,83 @@ suscriptores sobre las últimas noticias.
 class Observer;
 
 // Subject class
-class Subject {
+class Subject
+{
 public:
-    virtual void addObserver(Observer* observer) = 0;
-    virtual void removeObserver(Observer* observer) = 0;
-    virtual void notifyObservers(const std::string& news) = 0;
+    virtual void addObserver(Observer *observer) = 0;
+    virtual void removeObserver(Observer *observer) = 0;
+    virtual void notifyObservers(const std::string &news) = 0;
 };
 
 // Observer class
-class Observer {
+class Observer
+{
 public:
-    virtual void update(const string& news) = 0;
+    virtual void update(const string &news) = 0;
 };
 
 // Concrete Subject class
-class NewsAgency : public Subject {
+class NewsAgency : public Subject
+{
 private:
-    vector
-    <Observer*> observers;
+    vector<Observer *> observers;
     string latestNews;
 
 public:
-    void addObserver(Observer* observer) override {
+    void addObserver(Observer *observer) override
+    {
         observers.push_back(observer);
     }
 
-    void removeObserver(Observer* observer) override {
-        for (auto it = observers.begin(); it != observers.end(); ++it) {
-            if (*it == observer) {
+    void removeObserver(Observer *observer) override
+    {
+        for (auto it = observers.begin(); it != observers.end(); ++it)
+        {
+            if (*it == observer)
+            {
                 observers.erase(it);
                 break;
             }
         }
     }
 
-    void notifyObservers(const std::string& news) override {
+    void notifyObservers(const std::string &news) override
+    {
         latestNews = news;
-        for (Observer* observer : observers) {
+        for (Observer *observer : observers)
+        {
             observer->update(latestNews);
         }
     }
 
-    void publishNews(const std::string& news) {
+    void publishNews(const std::string &news)
+    {
         notifyObservers(news);
     }
 };
 
 // Concrete Observer classes
-class EmailSubscriber : public Observer {
+class EmailSubscriber : public Observer
+{
 public:
-    void update(const std::string& news) override {
+    void update(const std::string &news) override
+    {
         std::cout << "Email: Received latest news - " << news << endl;
     }
 };
 
-class SMSSubscriber : public Observer {
+class SMSSubscriber : public Observer
+{
 public:
-    void update(const std::string& news) override {
+    void update(const std::string &news) override
+    {
         std::cout << "SMS: Received latest news - " << news << endl;
     }
 };
 
 // Test code
-int main() {
+int main()
+{
     NewsAgency agency;
 
     // Creating observers
