@@ -11,36 +11,43 @@ However, manual memory management like this can be error-prone and difficult to 
 using namespace std;
 
 // Let's create a simple class for demonstration
-class MyClass {
-	public:
-		MyClass(int val) : value(val) {}
-		void setValue(int val) { value = val; }
-		int getValue() const { return value; }
-	private:
-		int value;
+class MyClass
+{
+public:
+	MyClass(int val) : value(val) {}
+	void setValue(int val) { value = val; }
+	int getValue() const { return value; }
+
+private:
+	int value;
 };
 
-int main() {
+int main()
+{
 
-	cout << "In this program, we first create a vector of MyClass pointers. We then add dynamically allocated MyClass objects to this vector. We use an iterator to go through the vector and access the MyClass objects. For each object, we print its original value, double the value, and then print the doubled value. Finally, we use another iterator to go through the vector again and delete the dynamically allocated objects.\n" << endl;
+	cout << "In this program, we first create a vector of MyClass pointers. We then add dynamically allocated MyClass objects to this vector. We use an iterator to go through the vector and access the MyClass objects. For each object, we print its original value, double the value, and then print the doubled value. Finally, we use another iterator to go through the vector again and delete the dynamically allocated objects.\n"
+		<< endl;
 
 	// Create a vector to hold pointers to MyClass objects
-	vector<MyClass*> myVector;
+	vector<MyClass *> myVector;
 
 	// Add some dynamically allocated objects to the vector
-	for (int i = 0; i < 10; ++i) {
+	for (int i = 0; i < 10; ++i)
+	{
 		myVector.push_back(new MyClass(i));
 	}
 
 	// Use an iterator to go through the vector and manipulate the objects
-	for (vector<MyClass*>::iterator it = myVector.begin(); it != myVector.end(); advance(it, 2)) {
+	for (vector<MyClass *>::iterator it = myVector.begin(); it != myVector.end(); advance(it, 2))
+	{
 		cout << "Original value: " << (*it)->getValue() << endl;
 		(*it)->setValue((*it)->getValue() * 2);
 		cout << "Doubled value: " << (*it)->getValue() << endl;
 	}
 
 	// Don't forget to delete the dynamically allocated objects
-	for (vector<MyClass*>::iterator it = myVector.begin(); it != myVector.end(); ++it) {
+	for (vector<MyClass *>::iterator it = myVector.begin(); it != myVector.end(); ++it)
+	{
 		delete *it;
 	}
 
