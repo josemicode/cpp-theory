@@ -3,17 +3,17 @@
 #include "maps.h"
 
 class Timer{
- private:
-  auto start;
-  auto end;
- public:
-  Timer(){
-   start = chrono::high_resolution_clock::now();
-  }
-  auto getPerformance(){
-   end = chrono::high_resolution_clock::now();
-   return ((end - start).count());
-  }
+	private:
+		auto start;
+		auto end;
+	public:
+		Timer(){
+			start = chrono::high_resolution_clock::now();
+		}
+		auto getPerformance(){
+			end = chrono::high_resolution_clock::now();
+			return ((end - start).count());
+		}
 };
 
 int main(){
@@ -23,6 +23,7 @@ int main(){
 	cin >> index;
 	switch(index){
 		case 1:{
+			Timer ti = Timer();
 			string* a = new string;
 			string* b = new string;
 
@@ -34,6 +35,8 @@ int main(){
 			canConstruct(*a, *b) ? cout << *a << " can be constructed with " << *b << endl : cout << "Incompatible strings" << endl;
 			delete a;
 			delete b;
+
+			cout << ti.getPerformance;
 			break;
 		       }
 		default:
