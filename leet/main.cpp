@@ -2,6 +2,20 @@
 #include <vector>
 #include "maps.h"
 
+class Timer{
+ private:
+  auto start;
+  auto end;
+ public:
+  Timer(){
+   start = chrono::high_resolution_clock::now();
+  }
+  auto getPerformance(){
+   end = chrono::high_resolution_clock::now();
+   return ((end - start).count());
+  }
+};
+
 int main(){
 	vector<string> problems = {"ransomNote"};
 	cout << "Select test case index: " << endl;
