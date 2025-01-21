@@ -1,18 +1,24 @@
+#include <iostream>
 #include <chrono>
 #include <vector>
 #include "maps.h"
 
 class Timer{
 	private:
-		auto start;
-		auto end;
+		chrono::high_resolution_clock::time_point start;
+		chrono::high_resolution_clock::time_point end;
+
 	public:
-		Timer(){
+		Timer() {
 			start = chrono::high_resolution_clock::now();
 		}
-		auto getPerformance(){
+
+		void stopTimer() {
 			end = chrono::high_resolution_clock::now();
-			return ((end - start).count());
+		}
+
+		auto getPerformance() {
+			return chrono::duration_cast<chrono::nanoseconds>(end - start).count();
 		}
 };
 
@@ -23,7 +29,7 @@ int main(){
 	cin >> index;
 	switch(index){
 		case 1:{
-			Timer ti = Timer();
+			
 			string* a = new string;
 			string* b = new string;
 
@@ -32,13 +38,18 @@ int main(){
 			cout << "\nb: ";
 			cin >> *b;
 
-			canConstruct(*a, *b) ? cout << *a << " can be constructed with " << *b << endl : cout << "Incompatible strings" << endl;
+			bool compatible;
+			Timer ti = Timer();
+			compatible = canConstruct(*a, *b);
+			ti.stopTimer();
+
+			compatible ? cout << *a << " can be constructed with " << *b << endl : cout << "Incompatible strings" << endl;
 			delete a;
 			delete b;
 
-			cout << ti.getPerformance;
+			cout << ti.getPerformance() << " ns" << endl;
 			break;
-		       }
+		}
 		default:
 			cout << "DEFAULT" << endl;
 	}
