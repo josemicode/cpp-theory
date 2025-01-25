@@ -1,3 +1,4 @@
+#include <iostream>
 #include "backtracking.h"
 
 vector <vector <int> > permute(vector <int> nums) {
@@ -22,7 +23,13 @@ void btPerm(vector <int> & nums, vector <vector <int> > & res, int ind) {
 }
 
 void swapper(int & a, int & b) {
-	a = a + b;
+	//std::cout << a << b << " xx " << endl;
+	/*a = a + b;
 	b = a - b;
-	a = a - b;
+	a = a - b;*/
+	//? Why not the aritmetic swap? Well, references...
+	int aux = a;
+	a = b;
+	b = aux;
+	//std::cout << a << b << " zz " << endl;
 }
